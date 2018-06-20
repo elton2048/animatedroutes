@@ -1,0 +1,6 @@
+{
+    // "jshint.packageManager": "yarn",
+    "editor.tabSize": 2,
+    "eslint.packageManager": "yarn",
+    "eslint.enable": true
+}
