@@ -42,6 +42,11 @@ body {
   height: 100%;
 }
 
+.custom {
+  position: relative;
+  width: min-content;
+}
+
 .page {
   top: 24px;
   padding: 24px;

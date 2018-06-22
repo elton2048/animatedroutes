@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter, Route, Link, Switch } from 'react-router-dom'
+import ClassNames from 'classnames'
 
 import Home from './Home'
 import Subpage from './Subpage'
@@ -18,11 +19,18 @@ const firstChild = props => {
 
 class App extends Component {
   state = {
-    clicked: false
+    clicked: false,
+    customClass: ""
   }
+
+  customClass = {}
 
   constructor(props) {
     super(props)
+
+    const { location } = this.props
+    console.log(location)
+    
 
     this.props.history.listen((location, action) => {
       console.log(location)
@@ -31,6 +39,11 @@ class App extends Component {
       })
     })
 
+    this.state.customClass = ClassNames({
+      'custom-enter-done': location.pathname === '/subpage' ? true : false,
+      'test': location.pathname === '/subpage' ? false : true
+    })
+    
     this.handleClick = this.handleClick.bind(this)
   }
 
@@ -45,8 +58,8 @@ class App extends Component {
   render() {
 
     const { location } = this.props
-    const { clicked } = this.state
-    console.log(this.props)
+    const { clicked, customClass } = this.state
+    console.log(customClass)
     
     return (
       <div className="App">
@@ -65,9 +78,10 @@ class App extends Component {
                 </Switch>
               </CSSTransition>
             </TransitionGroup>
-            <CSSTransition key="test" in={clicked} classNames="custom" timeout={3000}
+            <CSSTransition key="custom" in={clicked} classNames="custom" timeout={1000}
                 >
-              <div className={['custom', location.pathname === '/subpage' && 'custom-enter-done'].filter(e => !!e).join(' ')}>
+              {/* <div className={['custom'].filter(e => !!e).join(' ')}> */}
+              <div className={`custom ${customClass}`}>
                 test
               </div>
             </CSSTransition>

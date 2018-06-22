@@ -16,20 +16,16 @@
   transition: opacity 1s ease-out;
 }
 
-.custom {
-  position: relative;
-}
-
 .custom-enter.custom-enter-active {
   animation-name: example;
-  animation-duration: 3s;
+  animation-duration: 1s;
   animation-iteration-count: 1;
   animation-timing-function: ease-in;
 }
 
 .custom-exit.custom-exit-active {
   animation-name: example;
-  animation-duration: 3s;
+  animation-duration: 1s;
   animation-direction: reverse;
   animation-iteration-count: 1;
   animation-timing-function: ease-out;
@@ -37,9 +33,10 @@
 
 @keyframes example {
   0% {left: 0px;}
-  100% {left: 100px;}
+  100% {left: 100px; transform: rotate(20deg);}
 }
 
 .custom-enter-done {
   left: 100px;
+  transform: rotate(20deg);
 }
